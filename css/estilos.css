@@ -1,0 +1,21 @@
+body {
+	background: #222;
+	color: white;
+}
+.imagenes {
+	background: white;
+}
+
+.cobras {
+
+}
+.leones {
+
+}
+.leones img, .cobras img {
+	max-width: 100%;
+}
+.votos {
+	width:100%;
+	margin: 0 auto;
+	padding:10px;list-style:none;}
