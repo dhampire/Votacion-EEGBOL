@@ -1,7 +1,10 @@
 <?php
-	require_once("config.php");
-	$posts=$db->query("select * from posts order by id desc");
-	$cobras=$db->query("select * from cobras order by id desc");
+
+session_start(); 
+
+//	require_once("config.php");
+//	$posts=$db->query("select * from posts order by id desc");
+//	$cobras=$db->query("select * from cobras order by id desc");
 ?>
 
 <!DOCTYPE html>
@@ -21,19 +24,26 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
 
 
 </style>
+
 </head>
 
 <body>
-
+<a href="fbconfig.php">Login with Facebook</a></div>
+ <?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
 	<div class="container">
 		<div class="col-md-12">
 			<center><img src="img/logo.png" alt=""></center>
+			
 		</div>
 	</div>
 
 	<div class="container">
 		<div class="col-md-6"><center><img src="img/leones.png" alt=""></center></div>
 		<div class="col-md-6"><center><img src="img/cobras.png" alt=""></center></div>
+		<li>Hola: <?php echo  $_SESSION['FBID']; ?></li>
+		<li>Hola: <?php echo  $_SESSION['FULLNAME']; ?></li>
+		<li>Hola: <?php echo  $_SESSION['EMAIL']; ?></li>
+		<div><a href="salir.php">Logout</a></div>
 	</div>
 <div class="fuegos row">
 	<div class="container">
@@ -110,5 +120,7 @@ $(document).ready(function()
 	});
 });
 </script>
+
+    <?php endif ?>
 </body>
 </html>
