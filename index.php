@@ -1,6 +1,7 @@
 <?php
 	require_once("config.php");
 	$posts=$db->query("select * from posts order by id desc");
+	$cobras=$db->query("select * from cobras order by id desc");
 ?>
 
 <!DOCTYPE html>
@@ -26,17 +27,17 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
 
 	<div class="container">
 		<div class="col-md-12">
-			<center>logo</center>
+			<center><img src="img/logo.png" alt=""></center>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="col-md-6">Leones</div>
-		<div class="col-md-6">cobras</div>
+		<div class="col-md-6"><center><img src="img/leones.png" alt=""></center></div>
+		<div class="col-md-6"><center><img src="img/cobras.png" alt=""></center></div>
 	</div>
-
+<div class="fuegos row">
 	<div class="container">
-		<div class="col-md-6 col-xs-6 imagenes">
+		<div class="col-md-6 col-xs-6 leones">
 			
 			<?php 
 				if ($filas=$posts->fetch_array())
@@ -45,7 +46,7 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
 					{
 					?>
 					<div class="col-md-6 cobras">
-					<img src="img/<?php echo $filas["id"]?>.png" alt="">
+					<img src="img/leones/<?php echo $filas["id"]?>.png" alt="">
 					<ul class="votos">
 						<li class="btn btn-success" data-voto="likes" data-id="<?php echo $filas["id"]; ?>">¡ VOTA !</li>
 					</ul>
@@ -58,12 +59,29 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
 				?>
 			</div>
 
-		<div class="col-md-6 col-xs-6 imagenes">
-			<div class="col-md-6 leones"></div>
-			<div class="col-md-6 leones"></div>		</div>
+		<div class="col-md-6 col-xs-6">
+			<?php 
+				if ($filas=$cobras->fetch_array())
+				{
+					do
+					{
+					?>
+					<div class="col-md-6 cobras">
+					<img src="img/cobras/<?php echo $filas["id"]?>.png" alt="">
+					<ul class="votos">
+						<li class="btn btn-success" data-voto="likes" data-id="<?php echo $filas["id"]; ?>">¡ VOTA !</li>
+					</ul>
+					</div>
+					<?php
+					}
+					while($filas=$cobras->fetch_array());
+				}
+				else echo "<h3>No hay entradas disponibles.</h3>";
+				?>
+		</div>
 	</div>
 
-
+</div>
 
 <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript">
@@ -83,11 +101,11 @@ $(document).ready(function()
 				if (data!="voto_duplicado") 
 				{
 					li.addClass(voto_hecho+"_votado").find("span").text(data);
-					li.closest("ul").append("<span class='votado'><div class='alert alert-success' role='alert'><strong>YGracias!</strong>Y</span>");
+					li.closest("ul").append("<span class='votado'><div class='alert alert-success' role='alert'><strong>!Gracias por tu voto¡</strong></span>");
 				}
-				else li.closest("ul").append("<span class='votado'><div class='alert alert-warning' role='alert'<strong>Ya has votado!</strong></div></span>");
+
 			});
-			setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
+			setTimeout(function() {$('.votado').fadeOut('fast');}, 1000);
 		}
 	});
 });

@@ -1,5 +1,5 @@
 body {
-	background: #222;
+	background: #1c1c1c;
 	color: white;
 }
 .imagenes {
@@ -19,3 +19,6 @@ body {
 	width:100%;
 	margin: 0 auto;
 	padding:10px;list-style:none;}
+.fuegos {
+	background: url(../img/fondo-azul.png) no-repeat right center, url(../img/fondo-amarillo.png) no-repeat left center;
+}
