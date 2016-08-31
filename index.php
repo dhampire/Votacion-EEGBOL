@@ -2,9 +2,9 @@
 
 session_start(); 
 
-//	require_once("config.php");
-//	$posts=$db->query("select * from posts order by id desc");
-//	$cobras=$db->query("select * from cobras order by id desc");
+	require_once("config.php");
+	$posts=$db->query("select * from posts WHERE id order by rand()");
+	$cobras=$db->query("select * from cobras WHERE id order by rand() ");
 ?>
 
 <!DOCTYPE html>
@@ -14,23 +14,16 @@ session_start();
 <title>Sistema de votaci&oacute;n Me gusta o No me gusta con PHP, Jquery y Ajax</title>
 
 <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 </style>
-<style type="text/css">
-.contenedor{width:600px;margin-right:auto;margin-left:auto;font-family:Georgia;font-size:13px;line-height:135%}
-h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px 0;clear:both}
 
-/*voting style */
-
-
-</style>
 
 </head>
 
 <body>
-<a href="fbconfig.php">Login with Facebook</a></div>
  <?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
-	<div class="container">
+ 	<div class="container">
 		<div class="col-md-12">
 			<center><img src="img/logo.png" alt=""></center>
 			
@@ -40,10 +33,6 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
 	<div class="container">
 		<div class="col-md-6"><center><img src="img/leones.png" alt=""></center></div>
 		<div class="col-md-6"><center><img src="img/cobras.png" alt=""></center></div>
-		<li>Hola: <?php echo  $_SESSION['FBID']; ?></li>
-		<li>Hola: <?php echo  $_SESSION['FULLNAME']; ?></li>
-		<li>Hola: <?php echo  $_SESSION['EMAIL']; ?></li>
-		<div><a href="salir.php">Logout</a></div>
 	</div>
 <div class="fuegos row">
 	<div class="container">
@@ -93,6 +82,16 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
 
 </div>
 
+<?php else: ?>
+
+<div class="container">
+	<div class="col-md-6 col-md-offset-3 ingreso">
+		Para votar por tu guerrrero favorito, solo necesitas hacer click en el siguiente boton
+<a href="fbconfig.php" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
+	</div>
+</div>
+<?php endif ?>
+
 <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() 
@@ -120,7 +119,5 @@ $(document).ready(function()
 	});
 });
 </script>
-
-    <?php endif ?>
 </body>
 </html>

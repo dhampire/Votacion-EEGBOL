@@ -11,5 +11,10 @@ if($_POST)
 		$votado=$db->query("UPDATE posts SET ".$voto."=".$voto."+1 WHERE id='$id'");
 		echo ($numero+1);
 
+		$total_votos=$db->query("select ".$voto." from cobras WHERE id='$id' limit 1");
+		if ($fila=$total_votos->fetch_array()) $numero=$fila[$voto];
+
+		$votado=$db->query("UPDATE cobras SET ".$voto."=".$voto."+1 WHERE id='$id'");
+		echo ($numero+1);
 }
 ?>
