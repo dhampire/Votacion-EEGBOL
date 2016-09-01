@@ -2,6 +2,7 @@
 session_start();
 // added in v4.0.0
 require_once 'autoload.php';
+require_once('functions.php');
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -35,7 +36,7 @@ if ( isset( $session ) ) {
  	    $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
 	    $femail = $graphObject->getProperty('email');    // To Get Facebook email ID
 
-
+  checkuser($fbid,$fbfullname,$femail);
 	/* ---- Session Variables -----*/
 	    $_SESSION['FBID'] = $fbid;           
         $_SESSION['FULLNAME'] = $fbfullname;
@@ -46,4 +47,5 @@ if ( isset( $session ) ) {
   $loginUrl = $helper->getLoginUrl(array('scope' => 'email'));
  header("Location: ".$loginUrl);
 }
+
 ?>
