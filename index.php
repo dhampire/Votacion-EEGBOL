@@ -6,9 +6,6 @@ session_start();
 	$posts=$db->query("select * from posts WHERE id order by rand()");
 	$cobras=$db->query("select * from cobras WHERE id order by rand() ");
 
-	$id = $_SESSION['FBID'];
-	$nombre = $_SESSION['FULLNAME'];
-	$correo = $_SESSION['EMAIL'];
 ?>
 
 <!DOCTYPE html>
@@ -16,29 +13,40 @@ session_start();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Votación: ESTO ES GUERRA - Bolivia</title>
+	<meta property="og:url"                content="http://360onlinemedia.com/votos" />
+    <meta property="og:type"               content="article" />
+	<meta property="og:title"              content="ESTO ES GUERRA" />
+	<meta property="og:description"        content="Registrate y apoya a tu guerrero o guerrera favorita" />
+	<meta property="og:image"              content="http://360onlinemedia.com/votos/img/logo.jpg" />
 
 <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
+
+
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 </head>
 
 <body>
- <?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
+
  	<div class="container">
 
-		<div class="col-md-12">
+		<div class="col-md-12 wow slideRight">
 			<center><img src="img/logo.png" alt=""></center>
 			
 		</div>
 	</div>
-
+ <?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
 	<div class="container">
-		<div class="col-md-6">
-			<div class="col-md-6"><center><img src="img/leones.png" alt=""></center></div>
-		</div>
-		<div class="col-md-6">
-			<div class="col-md-6"><center><img src="img/cobras.png" alt=""></center></div>
-		</div>
+
+			<div class="col-md-6 col-xs-6 logos"><center><img src="img/leones.png" alt=""></center></div>
+
+			<div class="col-md-6 col-xs-6 logos"><center><img src="img/cobras.png" alt=""></center></div>
+
 	</div>
 <div class="fuegos row">
 	<div class="container">
@@ -90,7 +98,7 @@ session_start();
 
 <?php else: ?>
 <div class="container">
-	<div class="col md-6 col-md-offset-3 ingreso">
+	<div class="col-md-6 col-md-offset-3 ingreso">
 			<h3>Para votar por tu guerrrero favorito, solo necesitas hacer click en el siguiente boton</h3>
 			<a href="fbconfig.php" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
 	</div>
@@ -116,7 +124,7 @@ $(document).ready(function()
 				if (data!="voto_duplicado") 
 				{
 					li.addClass(voto_hecho+"_votado").find("span").text(data);
-					li.closest("ul").append("<span class='votado'><div class='alert alert-success' role='alert'><strong>!Gracias por tu voto¡</strong></span>");
+					li.closest("ul").append("<span class='votado'><div class='alert alert-success popup' role='alert'><strong>!Gracias por tu voto¡</strong></span>");
 				}
 
 			});
@@ -124,16 +132,11 @@ $(document).ready(function()
 		}
 	});
 
-
+	new WOW().init();
 });
 
 </script>
 
-<script>
-   $(document).ready(function()
-   {
-      $("#mostrarmodal").modal("show");
-   });
-</script>
+
 </body>
 </html>

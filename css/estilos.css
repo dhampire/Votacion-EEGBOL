@@ -12,7 +12,7 @@ body {
 .leones {
 
 }
-.leones img, .cobras img {
+.logos img, .leones img, .cobras img {
 	max-width: 100%;
 }
 .votos {
@@ -23,12 +23,21 @@ body {
 	background: url(../img/fondo-azul.png) no-repeat right center, url(../img/fondo-amarillo.png) no-repeat left center;
 }
 
+.popup{
+  left: 15%;
+  position: absolute;
+  top: 10px;
+  z-index: 10;
+}
 .ingreso {
 	background: white;
 	color: #111;
 	border-radius: 5px;
 	padding: 20px;
 	text-align: center;
+}
+.ingreso table{
+  color: #111;
 }
 .button {
 
@@ -77,4 +86,7 @@ border-right: 1px solid  rgba(0,0,0,0.15);
 }
 .button.facebook {
  background: #3b5998;
+}
+.titulo {
+  text-align: center;
 }
