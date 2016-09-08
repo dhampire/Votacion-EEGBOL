@@ -20,7 +20,7 @@ body {
 	margin: 0 auto;
 	padding:10px;list-style:none;}
 .fuegos {
-	background: url(../img/fondo-azul.png) no-repeat right center, url(../img/fondo-amarillo.png) no-repeat left center;
+
 }
 
 .popup{
@@ -89,4 +89,23 @@ border-right: 1px solid  rgba(0,0,0,0.15);
 }
 .titulo {
   text-align: center;
+}
+body {
+  background: url(../img/cover.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+
+.inhabilita {
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.alert { margin: 0 !important }
+.btn {
+  width: 100%;
+}
+.votos-conteo {
+  border-radius: 5px 5px 0 0;
 }
